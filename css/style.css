@@ -1958,7 +1958,7 @@ header {
 	left: 0;
 	top: 0;
 	width: 100%;
-	z-index: 101;
+	z-index: 10;
 }
 
 .header-top {
