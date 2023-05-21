@@ -12,6 +12,23 @@
 	<meta name="keywords" content="" />
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico" />
 	<link rel="preload stylesheet" href="css/style.css" as="style">
+	<script>
+		window.targetGlobalSettings = {
+			cookieDomain: 'mohit49.github.io'
+		};
+	</script>
+	<script>
+
+		var dataLayer = {
+			loggedIn: true,
+			username: "mohitanim@gmail.com",
+			pagename: 'Home page',
+			memberType: window.location.search.length > 0 ? window.location.search.split('=')[1] : 'Default',
+			loginStatus: window.location.search.length > 0 ? window.location.search.replace('?', '') : 'logout'
+		}
+
+
+	</script>
 	<script src="https://assets.adobedtm.com/6268dc4b6b26/dabcfd40dcc0/launch-cfc165d2b747-development.min.js"></script>
 </head>
 
