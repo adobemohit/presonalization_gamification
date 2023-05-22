@@ -1,165 +1,143 @@
 <script>
 
-    var html = `<div class="overlay"></div>
-  <div class="popup">
-    <button class="popup__close">&#x2715</button>
-    <!-- Question 1-->
-    <div class="popup__content question-visible">
-      <h2 class="popup__title">Select your Favorite Color?</h2>
-      <p class="popup__subtitle">Take this four-question quiz and discover your movie match!</p>
-      <div class="popup__progress">
-        <div class="popup__progress-item popup__progress-item_active">1</div>
-        <div class="popup__progress-line"></div>
-        <div class="popup__progress-item ">2</div>
+    var shopper = '${profile.shopper}' || 'false';
+    var prem = '${profile.prem}' || 'false';
+    if (shopper == 'false' && prem == 'false') {
+        var html = `<div class="overlay"></div>
+    <div class="popup">
+      <button class="popup__close">&#x2715</button>
+      <!-- Question 1-->
+      <!-- Question 2-->
+      <div class="popup__content">
+        <h2 class="popup__title">What kind of buyer are you ?</h2>
+        <p class="popup__subtitle">Take this four-question quiz and discover your movie match!</p>
     
-      </div>
-      <div class="quiz">
-        <h5 class="quiz__question">What genre do you prefer?</h5>
-        <div class="quiz__answers">
-          <label class="container">Blue
-            <input type="radio" name="option1" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Pink
-            <input type="radio" name="option1" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container"> Red
-            <input type="radio" name="option1" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container"> Yellow
-            <input type="radio" name="option1" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <button class="popup__button" id="popupButton1" disabled="true">Next</button>
-      </div>
-    </div>
-    <!-- Question 2-->
-    <div class="popup__content">
-      <h2 class="popup__title">What kind of buyer are you ?</h2>
-      <p class="popup__subtitle">Take this four-question quiz and discover your movie match!</p>
+        <div class="popup__progress">
+          <div class="popup__progress-item">
+            &#x1F5F8;
+          </div>
+          <div class="popup__progress-line"></div>
+          <div class="popup__progress-item popup__progress-item_active">2</div>
   
-      <div class="popup__progress">
-        <div class="popup__progress-item">
-          &#x1F5F8;
         </div>
-        <div class="popup__progress-line"></div>
-        <div class="popup__progress-item popup__progress-item_active">2</div>
-
-      </div>
-      <div class="quiz">
-        <h5 class="quiz__question">What kind of setting do you like?</h5>
-        <div class="quiz__answers">
-          <label class="container">Value Shopper
-            <input type="radio" name="option2" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-          <label class="container">Premium buyer
-            <input type="radio" name="option2" class="quiz__input">
-            <span class="checkmark"></span>
-          </label>
-      
-       
+        <div class="quiz">
+          <h5 class="quiz__question">What kind of setting do you like?</h5>
+          <div class="quiz__answers">
+            <label class="container">Value Shopper
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container">Premium buyer
+              <input type="radio" name="option2" class="quiz__input">
+              <span class="checkmark"></span>
+            </label>
+        
+         
+          </div>
+          <button class="popup__button" id="popupButton2" disabled="true">Next</button>
         </div>
-        <button class="popup__button" id="popupButton2" disabled="true">Next</button>
       </div>
-    </div>
-
- 
-
-    <!-- Final Slide -->
-    <div class="popup__content popup__content6">
-      <h2 class="popup__title">Great! Thanks, Will get back to you with better experiance</h2>
-      <div class="header-logo">
-					<img src="img/header-logo.svg" alt="">
-				</div>
-    </div>
-  </div>`;
-
-
-    document.querySelector('.main-wrapper').insertAdjacentHTML("afterend", html);
-    const overlay = document.querySelector(".overlay");
-    const popup = document.querySelector(".popup");
-    const cross = popup.querySelector(".popup__close");
-
-    function openPopup() {
-        overlay.addEventListener("click", closePopup);
-        cross.addEventListener("click", closePopup);
-        overlay.classList.add("overlay_visible");
-        popup.classList.add("popup_visible");
+  
+   
+  
+      <!-- Final Slide -->
+      <div class="popup__content popup__content6">
+        <h2 class="popup__title">Great! Thanks, Will get back to you with better experiance</h2>
+        <div class="header-logo">
+                      <img src="img/header-logo.svg" alt="">
+                  </div>
+      </div>
+    </div>`;
 
 
+        document.querySelector('.main-wrapper').insertAdjacentHTML("afterend", html);
+        const overlay = document.querySelector(".overlay");
+        const popup = document.querySelector(".popup");
+        const cross = popup.querySelector(".popup__close");
 
-    }
-    setTimeout(() => {
-        openPopup();
-    }, "5000");
-
-
-    function closePopup() {
-        overlay.classList.remove("overlay_visible");
-        popup.classList.remove("popup_visible");
-        document.body.classList.remove("body_blur");
-        overlay.removeEventListener("click", closePopup);
-        cross.removeEventListener("click", closePopup);
+        function openPopup() {
+            overlay.addEventListener("click", closePopup);
+            cross.addEventListener("click", closePopup);
+            overlay.classList.add("overlay_visible");
+            popup.classList.add("popup_visible");
 
 
 
+        }
+        setTimeout(() => {
+            openPopup();
+        }, "5000");
 
-    }
 
-    // Опросник
-    const quizes = document.querySelectorAll(".quiz");
-    const questions = document.querySelectorAll(".popup__content");
+        function closePopup() {
+            overlay.classList.remove("overlay_visible");
+            popup.classList.remove("popup_visible");
+            document.body.classList.remove("body_blur");
+            overlay.removeEventListener("click", closePopup);
+            cross.removeEventListener("click", closePopup);
 
-    quizes.forEach((quiz) => {
-        const options = quiz.querySelectorAll(".quiz__input");
-        const nextButton = quiz.querySelector(".popup__button");
-        options.forEach((option) => {
-            option.addEventListener("click", () => {
-                nextButton.disabled = false;
+
+
+
+        }
+
+        // Опросник
+        const quizes = document.querySelectorAll(".quiz");
+        const questions = document.querySelectorAll(".popup__content");
+
+        quizes.forEach((quiz) => {
+            const options = quiz.querySelectorAll(".quiz__input");
+            const nextButton = quiz.querySelector(".popup__button");
+            options.forEach((option) => {
+                option.addEventListener("click", () => {
+                    nextButton.disabled = false;
+                });
             });
         });
-    });
 
-    questions.forEach((question, i) => {
-        const button = document.getElementById(`popupButton${i + 1}`);
-        button?.addEventListener("click", () => {
-            question.classList.remove("question-visible");
-            if (questions[i + 1]) {
-                questions[i + 1].classList.add("question-visible");
-            }
+        questions.forEach((question, i) => {
+            const button = document.getElementById(`popupButton${i + 1}`);
+            button?.addEventListener("click", () => {
+                question.classList.remove("question-visible");
+                if (questions[i + 1]) {
+                    questions[i + 1].classList.add("question-visible");
+                }
+            });
+
+
         });
 
 
-    });
 
 
-    document.getElementById('popupButton1').addEventListener('click', function (event) {
+        document.getElementById('popupButton2').addEventListener('click', function (event) {
 
-        adobe.target.trackEvent({
-            "mbox": "mboxTrack",
-            "params": {
-                "profile.colourSelected": event.target.parentElement.querySelector('.quiz__answers').querySelector('input:checked').parentNode.innerText.trim()
+            var usaerFal = event.target.parentElement.querySelector('.quiz__answers').querySelector('input:checked').parentNode.innerText.trim().toLowerCase().split(' ').join('-');
+            if (usaerFal == 'premium-buyer') {
+                adobe.target.trackEvent({
+                    "mbox": "mboxTrack",
+                    "params": {
+                        "profile.prem": true,
+                        "profile.shopper": false,
+
+                    }
+                });
+            } else if (usaerFal == 'value-shopper') {
+
+                adobe.target.trackEvent({
+                    "mbox": "mboxTrack",
+                    "params": {
+                        "profile.prem": false,
+                        "profile.shopper": true,
+
+                    }
+                });
+
             }
+            closePopup();
+
         });
-
-    });
-
-    document.getElementById('popupButton2').addEventListener('click', function (event) {
-
-
-        adobe.target.trackEvent({
-            "mbox": "mboxTrack",
-            "params": {
-                "profile.flevor": event.target.parentElement.querySelector('.quiz__answers').querySelector('input:checked').parentNode.innerText.trim()
-            }
-        });
-
-    });
-
+    }
 </script>
 <style>
     .overlay {
